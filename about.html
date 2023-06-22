@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Генератор изображений</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Roboto', sans-serif;
+			font-size: 16px;
+		}
+		header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #f0f0f0;
+			padding: 10px 20px;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+		}
+		.logo {
+			font-size: 24px;
+			font-weight: 700;
+			color: #333;
+		}
+		.nav {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.nav a {
+			color: #333;
+			text-decoration: none;
+			margin-right: 20px;
+		}
+		.nav a:hover {
+			text-decoration: underline;
+		}
+		.user {
+			font-size: 14px;
+			color: #333;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.user a {
+			color: #333;
+			text-decoration: none;
+			margin-left: 10px;
+		}
+		.user a:hover {
+			text-decoration: underline;
+		}
+		.main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 20px;
+		}
+		.left-menu, .right-menu {
+			width: 200px;
+			background-color: #f0f0f0;
+			padding: 10px;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+		}
+		.left-menu h2, .right-menu h2 {
+			font-size: 18px;
+			font-weight: 700;
+			margin: 0 0 10px;
+			padding: 0;
+		}
+		.left-menu input, .left-menu select, .right-menu input, .right-menu select {
+			margin-bottom: 10px;
+			width: 100%;
+			padding: 5px;
+			border: none;
+			background-color: #fff;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+		}
+		.left-menu label, .right-menu label {
+			font-size: 14px;
+			font-weight: 700;
+			margin-bottom: 5px;
+			display: block;
+		}
+		.main-content {
+			flex-grow: 1;
+			background-color: #fff;
+			padding: 20px;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+			position: relative;
+		}
+		.main-content h2 {
+			font-size: 24px;
+			font-weight: 700;
+			margin: 0 0 20px;
+			padding: 0;
+		}
+		.main-content p {
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+		.main-content input[type="file"] {
+			display: none;
+		}
+		.main-content label {
+			font-size: 14px;
+			font-weight: 700;
+			margin-bottom: 10px;
+			display: block;
+		}
+		.main-content button {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 14px;
+			font-weight: 700;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		.main-content .generate-btn {
+			background-color: #4caf50;
+		}
+		.main-content .left {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			display: flex;
+			align-items: center;
+		}
+		.main-content .right {
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			display: flex;
+			align-items: center		}
+		.main-content .left button, .main-content .right button {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 14px;
+			font-weight: 700;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		.main-content .left button:hover, .main-content .right button:hover {
+			background-color: #4caf50;
+		}
+		.tooltip {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, 0.8);
+			color: #fff;
+			padding: 10px;
+			font-size: 14px;
+			font-weight: 700;
+			border-radius: 5px;
+			display: none;
+			z-index: 999;
+		}
+		.tooltip:before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 100%;
+			margin-top: -5px;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-left: 5px solid rgba(0, 0, 0, 0.8);
+		}
+		.slider {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 5px;
+			border-radius: 5px;
+			background-color: #ddd;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+			margin-bottom: 10px;
+		}
+		.slider:hover {
+			opacity: 1;
+		}
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: #333;
+			cursor: pointer;
+		}
+		.slider::-moz-range-thumb {
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: #333;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="logo">Логотип</div>
+		<nav class="nav">
+			<a href="#">О нас</a>
+			<a href="#">Инструкция</a>
+			<a href="#">Галерея</a>
+			<a href="#">Генератор</a>
+			<a href="#">Моя коллекция</a>
+		</nav>
+		<div class="user">
+			Вход
+			<a href="#">Регистрация</a>
+		</div>
+	</header>
+	<div class="main">
+		<div class="left-menu">
+			<h2>Основные настройки</h2>
+			<label for="width">Ширина</label>
+			<input type="number" id="width" name="width" placeholder="Ширина">
+			<label for="height">Высота</label>
+			<input type="number" id="height" name="height" placeholder="Высота">
+			<label for="model">Модель</label>
+			<select id="model" name="model">
+				<option value="midjourney">Midjourney</option>
+				<option value="neuralstyle">Neuralstyle</option>
+				<option value="deepdream">Deepdream</option>
+			</select>
+			<label>Соответствие описанию</label>
+			<input type="range" min="0" max="100" value="50" class="slider" id="matching">
+			<label>Реализм</label>
+			<input type="range" min="0" max="100" value="50" class="slider" id="realism">
+			<label>Футуризм</label>
+			<input type="range" min="0" max="100" value="50" class="slider" id="futurism">
+			<label>Комиксы</label>
+			<input type="range" min="0" max="100" value="50" class="slider" id="comics">
+			<label>Стимпанк</label>
+			<input type="range" min="0" max="100" value="50" class="slider" id="steampunk">
+			<label for="pose">Позы</label>
+			<select id="pose" name="pose">
+            <option value="standing">Стоя</option>
+            <option value="sitting">Сидя</option>
+            <option value="lying">Лежа</option>
+            </select>
+            <label for="background">Фон</label>
+            <select id="background" name="background">
+            <option value="white">Белый</option>
+            <option value="black">Черный</option>
+            <option value="blue">Синий</option>
+            <option value="green">Зеленый</option>
+            <option value="red">Красный</option>
+            </select>
+            </div>
+            <div class="main-content">
+            <h2>Генератор изображений</h2>
+            <p>Выберите настройки и нажмите "Сгенерировать" для создания изображения.</p>
+            <form>
+            <label for="file">Выбрать файл</label>
+            <input type="file" id="file" name="file">
+            <div class="tooltip">Подсказка</div>
+            <button type="button" class="tooltip-btn">Подсказка</button>
+            <button type="button" class="generate-btn">Сгенерировать</button>
+            <div class="left">
+            <button type="button">Нравится</button>
+            <button type="button">Не нравится</button>
+            </div>
+            <div class="right">
+            <button type="button">Сохранить</button>
+            </div>
+            </form>
+            </div>
+            <div class="right-menu">
+            <h2>Дополнительные настройки</h2>
+            <label>Яркость</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="brightness">
+            <label>Контрастность</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="contrast">
+            <label>Насыщенность</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="saturation">
+            <label>Размытие</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="blur">
+            <label>Шум</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="noise">
+            <label>Текстура</label>
+            <input type="range" min="0" max="100" value="50" class="slider" id="texture">
+            </div>
+            </div>
+            <script>
+            const tooltipBtn = document.querySelector('.tooltip-btn');
+            const tooltip = document.querySelector('.tooltip');
+            tooltipBtn.addEventListener('click', () => {
+            tooltip.style.display = 'block';
+            });
+            </script>
+            
+            </body> </html>
