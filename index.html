@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hot key</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo&family=Istok+Web:wght@700&family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <div class="header__logo"><a href="#" class="header__logo">Key Visual</a></div>
+        <nav class="header__nav">
+          <ul class="header__nav__list">
+            <li class="header__nav__list__item"><a href="#">ГЛАВНАЯ</a></li>
+            <li class="header__nav__list__item"><a href="#">ИНСТРУКЦИЯ</a></li>
+            <li class="header__nav__list__item"><a href="#">ГАЛЕРЕЯ</a></li>
+            <li class="header__nav__list__item header__nav__list__item_active">
+              <a href="#">ГЕНЕРАТОР</a>
+            </li>
+            <li class="header__nav__list__item"><a href="#">МОЯ КОЛЛЕКЦИЯ</a></li>
+          </ul>
+        </nav>
+        <div class="header__enter-registration">
+          <a class="header__enter" href="#">ВХОД</a>
+          <a class="header__registration" href="#">РЕГИСТРАЦИЯ</a>
+        </div>
+      </div>
+    </header>
+
+    <aside class="settings">
+      <div class="settings__container">
+        <div class="basic-settings">
+          <h2 class="basic-settings__title">Основные настройки</h2>
+          <div class="option basic-settings__option basic-settings__option__size">
+            <p>Размер изображения</p>
+            <div class="basic-settings__option__size__inputs">
+              <input
+                class="basic-settings__input basic-settings__input_width"
+                type="number"
+                name="width"
+                min="100"
+                max="3000"
+              />
+              <input
+                class="basic-settings__input basic-settings__input_height"
+                type="number"
+                name="height"
+                min="100"
+                max="3000"
+              />
+            </div>
+          </div>
+          <div class="option basic-settings__option basic-settings__option__model">
+            <p>Модель</p>
+            <div class="dropdown basic-settings__model__dropdown">
+              <button class="basic-settings__dropdown">Stable Diffusion 1.5</button>
+              <ul class="basic-settings__dropdown__list">
+                <li
+                  class="basic-settings__dropdown__list_item basic-settings__dropdown__list__item-1"
+                  data-value="Stable Diffusion 1.5"
+                >
+                  Stable Diffusion 1.5
+                </li>
+                <li
+                  class="basic-settings__dropdown__list_item basic-settings__dropdown__list__item-2"
+                  data-value="Stable Diffusion 2.1"
+                >
+                  Stable Diffusion 2.1
+                </li>
+                <li
+                  class="basic-settings__dropdown__list_item basic-settings__dropdown__list__item-3"
+                  data-value="DALL-E 2"
+                >
+                  DALL-E 2
+                </li>
+                <li
+                  class="basic-settings__dropdown__list_item basic-settings__dropdown__list__item-4"
+                  data-value="Kandinsky 2.1"
+                >
+                  Kandinsky 2.1
+                </li>
+                <li
+                  class="basic-settings__dropdown__list_item basic-settings__dropdown__list__item-5"
+                  data-value="Midjourney"
+                >
+                  Midjourney
+                </li>
+              </ul>
+              <input type="text" name="select-model" value="" class="dropdown__input-hidden" />
+            </div>
+          </div>
+          <div class="option basic-settings__option basic-settings__option__matching">
+            <p>Соответствие запросу</p>
+            <div class="slider-container">
+              <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+              <div class="slider-value">50</div>
+            </div>
+          </div>
+        </div>
+        <div class="advanced-settings">
+          <h2 class="advanced-settings__title">Расширенные настройки</h2>
+          <div class="advanced-settings__positions">
+            <p class="advanced-settings__positions__title">Поза</p>
+            <button class="positions__dropdown__button"></button>
+            <div class="positions__dropdown__list"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="styles">
+      <div class="styles__container">
+        <h2 class="styles__title">Стили</h2>
+        <div class="option styles__option styles__option__realism">
+          <p>Реализм</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__futurism">
+          <p>Футуризм</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__cyberpank">
+          <p>Киберпанк</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__steampunk">
+          <p>Стимпанк</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__anime">
+          <p>Аниме</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__fantasy">
+          <p>Фэнтези</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__disney">
+          <p>Дисней</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__coubism">
+          <p>Кубизм</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__aquarelle">
+          <p>Акварель</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__street-art">
+          <p>Стрит-Арт</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+        <div class="option styles__option styles__option__oil">
+          <p>Масло</p>
+          <div class="slider-container">
+            <input type="range" min="0" max="100" value="50" class="slider" id="myRange" />
+            <div class="slider-value">50</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="generator">
+      <div class="textarea__container">
+        <textarea class="generator__textarea" name="request" id="request"> </textarea>
+        <button class="button_square generator__button"></button>
+      </div>
+
+      <div class="generator__result-area">
+        <p>Вы можете загрузить свой файл формата JPEG, PNG, GIF, SVG для создания изображения</p>
+        <label class="button_clear upload__button" for="uploadButtonInput">
+          <input
+            id="uploadButtonInput"
+            type="file"
+            name="upload"
+            accept=" image/*,image/jpeg,image/png,image/svg,image/gif"
+            class="upload__button_input"
+          />
+        </label>
+      </div>
+      <div class="postprocess">
+        <button class="button_clear delete__button">удалить</button>
+        <button class="button_clear collection__button">в коллекцию</button>
+        <button class="button_clear download__button">сохранить</button>
+      </div>
+
+      <div class="reg-window">
+        <h2 class="reg-window__title">Зарегистрируйтесь чтобы продолжить</h2>
+        <form class="reg-window__form" action="#">
+          <div>
+            <p>Логин</p>
+            <input
+              class="reg-window__form__input reg-window__form__input_login"
+              type="text"
+              name="login"
+              id=""
+              placeholder="Логин"
+            />
+          </div>
+          <div>
+            <p>Пароль</p>
+            <input
+              class="reg-window__form__input reg-window__form__input_login"
+              type="password"
+              name="password"
+              id=""
+              placeholder="Пароль"
+            />
+          </div>
+          <div>
+            <p>Почта</p>
+            <input
+              class="reg-window__form__input reg-window__form__input_login"
+              type="email"
+              name="email"
+              id=""
+              placeholder="Почта"
+            />
+          </div>
+          <div>
+            <p>Телефон</p>
+            <input
+              class="reg-window__form__input reg-window__form__input_login"
+              type="tel"
+              name="tel"
+              id=""
+              placeholder="Телефон"
+            />
+          </div>
+          <button class="button_clear reg-window__form__button" type="submit">продолжить</button>
+        </form>
+        <h2 class="reg-window__subtitle">регистрация с помощью других сервисов</h2>
+        <div class="reg-window__servises__container">
+          <a href="#" class="reg-window__servise reg-window__servise_vk">
+            <img src="images/VK Logo.svg" alt="VKontakte" width="30" />
+          </a>
+          <a href="#" class="reg-window__servise reg-window__servise_google">
+            <img src="images/google.svg" alt="Google" />
+          </a>
+          <a href="#" class="reg-window__servise reg-window__servise_yandex">
+            <img src="images/Yandex_znak.svg" alt="Yandex" />
+          </a>
+        </div>
+        <p class="reg-window__enter">Или <a href="#" class="reg-window__enter_link">войдите</a></p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
