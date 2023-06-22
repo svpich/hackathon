@@ -33,13 +33,11 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden;
-    
 
     background-image: url(../images/banner-img.png);
-    background-size: cover;
+    background-size: 100% 1200px;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background-position: top center;
 }
 
 a {
@@ -798,9 +796,41 @@ figure:hover+span {
     ;
 }
 
+#footer {
+    width: 100%;
+}
+
 
 /* copyright section end */
 
 .margin_top90 {
     margin-top: 90px;
+}
+
+@media (max-width: 2200px) {
+    body {
+        background-size: 2900px 1200px;
+
+    }
+}
+
+@media (max-width: 1199px) {
+    body {
+        background-size: 2700px 1000px;
+
+    }
+}
+
+@media (max-width: 991px) {
+    body {
+        background-size: 2400px 740px;
+
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        background-size: 2360px 700px;
+
+    }
 }
